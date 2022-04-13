@@ -1,0 +1,14 @@
+echo CREATING OBJECT FILES
+
+gcc -ansi -c car/car.c -o car/car.o
+gcc -ansi -c configuration/configuration.c -o configuration/configuration.o
+gcc -ansi -c leftright/leftright.c -o leftright/leftright.o
+gcc -ansi -c queue/queue.c -o queue/queue.o
+gcc -ansi -c results/results.c -o results/results.o
+
+gcc -ansi -c runOneSimulation.c -o runOneSimulation.o
+gcc -ansi -o runSimulations.o -c runSimulations.c
+
+echo LINKING BEGAN
+
+gcc runSimulations.o runOneSimulation.o results/results.o queue/queue.o leftright/leftright.o configuration/configuration.o car/car.o -lgsl -lgslcblas -o runSimulations
